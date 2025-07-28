@@ -10,12 +10,15 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
+    // Initialize EmailJS
+    emailjs.init("Rz7W9pVF0HdDryNNL");
+
     emailjs
       .sendForm(
-        "service_axbtt7a",  // Replace with your EmailJS Service ID
-        "template_1ziboq3",  // Replace with your EmailJS Template ID
+        "service_axbtt7a",  // EmailJS Service ID
+        "template_1ziboq3",  // EmailJS Template ID
         form.current,
-        "Rz7W9pVF0HdDryNNL"  // Replace with your EmailJS Public Key
+        "Rz7W9pVF0HdDryNNL"  // EmailJS Public Key
       )
       .then(
         () => {
@@ -68,6 +71,20 @@ const Contact = () => {
         <h3 className="text-xl font-semibold text-white text-center">
           Connect With Me <span className="ml-1">🚀</span>
         </h3>
+
+        {/* Simple Email Link for Testing */}
+        <div className="mt-4 text-center">
+          <a
+            href="mailto:aditchauhan2012@gmail.com?subject=Portfolio Contact&body=Hi Adit,%0D%0A%0D%0AI came across your portfolio and would like to connect with you.%0D%0A%0D%0ABest regards,"
+            className="inline-block bg-gradient-to-r from-purple-600 to-pink-500 py-3 px-6 text-white font-semibold rounded-md hover:opacity-90 transition"
+          >
+            Send Email Directly
+          </a>
+        </div>
+        
+        <div className="mt-4 text-center text-gray-400 text-sm">
+          Or fill out the form below:
+        </div>
 
         <form ref={form} onSubmit={sendEmail} className="mt-4 flex flex-col space-y-4">
           <input
